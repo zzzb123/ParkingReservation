@@ -1,4 +1,4 @@
-package RedirectingServer;
+package server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,24 +23,9 @@ public class ConnectionHandler implements Runnable{
 		try {
 			in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 			out = new PrintWriter(sock.getOutputStream(), true);
+			//Start of productive things
 			
-			do {
-				String mode = in.readLine();
-				switch(mode) {
-				case "reg"://register server connecting as leaf
-					//TODO implement reg mode
-					break;
-				case "req"://return leaf list
-					//TODO implement req mode
-					break;
-				case "rep"://check if leaf node is still responding
-					//TODO implement
-					break;
-				case "pos"://re-bind server to a new position -- relocates "true leaves"
-					//TODO implement
-					break;
-				}
-			}while(in.ready() && in.readLine().contentEquals("con"));
+			//End of productive things
 		} catch (IOException e) {
 			System.out.println("Error in communication with client.  Assuming client Disconnected.");
 		}
