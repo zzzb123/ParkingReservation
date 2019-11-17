@@ -9,8 +9,14 @@ package RedirectingServer;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
 
 public class Server{
+	public static Collection<SubServer> subServers = Collections.synchronizedCollection(new LinkedList<SubServer>());
+	
+	@SuppressWarnings("resource")
 	public static void main(String[]args) throws IOException{
 		ServerSocket ssock = new ServerSocket(12345);
 		while(ssock.isBound()) {
