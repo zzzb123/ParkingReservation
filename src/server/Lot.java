@@ -1,5 +1,6 @@
 package server;
 
-public abstract class Lot {
-	public abstract boolean hasOpenings();
+public interface Lot {
+	TimeSlot getTimeSlot(String timekey);
+	void cullSlots(String currentTime);
 }
