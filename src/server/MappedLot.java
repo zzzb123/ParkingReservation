@@ -1,5 +1,5 @@
 package server;
 
-public class MappedLot extends Lot{
+public class MappedLot implements Lot{
 
 }
