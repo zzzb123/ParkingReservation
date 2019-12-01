@@ -1,8 +1,6 @@
 package server;
 
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class UnmappedLot implements Lot, Serializable{
@@ -32,5 +30,18 @@ public class UnmappedLot implements Lot, Serializable{
 			if(s.compareTo(currentTime) < 0)
 				timeSlots.remove(s);
 		}
+	}
+
+	public boolean hasNormalOpenings(String time){
+		UnmappedTimeSlot t = (UnmappedTimeSlot) getTimeSlot(time);
+		if(t.getNormalRegistrations().size() < normalSpots)
+			return true;
+		return false;
+	}
+	public boolean hasHandicapOpenings(String time){
+		UnmappedTimeSlot t = (UnmappedTimeSlot) getTimeSlot(time);
+		if(t.getHandicapRegistrations().size() < handicapSpots)
+			return true;
+		return false;
 	}
 }
