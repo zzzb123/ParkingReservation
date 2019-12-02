@@ -1,6 +1,7 @@
 package server;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class UnmappedLot implements Lot, Serializable{
@@ -32,16 +33,18 @@ public class UnmappedLot implements Lot, Serializable{
 		}
 	}
 
-	public boolean hasNormalOpenings(String time){
-		UnmappedTimeSlot t = (UnmappedTimeSlot) getTimeSlot(time);
-		if(t.getNormalRegistrations().size() < normalSpots)
-			return true;
-		return false;
+	public synchronized void registerUserNormal(User u, String  time) throws NoOpenSpotsException{
+		UnmappedTimeSlot t = (UnmappedTimeSlot)timeSlots.get(time);
+		ArrayList<User> registrations = t.getNormalRegistrations();
+		if(registrations.size() >= normalSpots)
+			throw new NoOpenSpotsException();
+		registrations.add(u);
 	}
-	public boolean hasHandicapOpenings(String time){
-		UnmappedTimeSlot t = (UnmappedTimeSlot) getTimeSlot(time);
-		if(t.getHandicapRegistrations().size() < handicapSpots)
-			return true;
-		return false;
+	public synchronized void registerUserHandicap(User u, String  time) throws NoOpenSpotsException{
+		UnmappedTimeSlot t = (UnmappedTimeSlot)timeSlots.get(time);
+		ArrayList<User> registrations = t.getHandicapRegistrations();
+		if(registrations.size() >= normalSpots)
+			throw new NoOpenSpotsException();
+		registrations.add(u);
 	}
 }
