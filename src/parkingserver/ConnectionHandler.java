@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.LinkedList;
 
 public class ConnectionHandler implements Runnable{
 	private Socket sock;
@@ -29,5 +30,20 @@ public class ConnectionHandler implements Runnable{
 		} catch (IOException e) {
 			System.out.println("Error in communication with client.  Assuming client Disconnected.");
 		}
+	}
+
+	public LinkedList<Lot> sortLots(double[] pos){
+		LinkedList<Lot> sortedLots = new LinkedList<>();
+		for(Lot l : Server.lots){
+			int insertPos = 0;
+			while(insertPos < sortedLots.size()){
+				if(l.getDistance(pos) < sortedLots.get(insertPos).getDistance(pos))
+					break;
+				else
+					insertPos++;
+			}
+			sortedLots.add(insertPos, l);
+		}
+		return sortedLots;
 	}
 }

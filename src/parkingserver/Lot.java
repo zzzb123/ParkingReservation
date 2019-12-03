@@ -1,14 +1,18 @@
 package parkingserver;
 public class Lot{
+    public String lotName;
+    private double[] position;
     private Scheduler[] handicapSpots;
     private Scheduler[] normalSpots;
-    public Lot(int numNormal, int numHandicap){
+    public Lot(String name,int numNormal, int numHandicap, double[] position){
         handicapSpots = new Scheduler[numHandicap];
         for(int i = 0; i < handicapSpots.length; ++i)
             handicapSpots[i] = new Scheduler();
         normalSpots = new Scheduler[numNormal];
         for(int i = 0; i < normalSpots.length; ++i)
             normalSpots[i] = new Scheduler();
+        this.position = position;
+        this.lotName = name;
     }
 
     public boolean hasOpenNormalSpots(Reservation r){
@@ -69,5 +73,9 @@ public class Lot{
     }
     public Scheduler[] getHandicapSpots(){
         return handicapSpots;
+    }
+
+    public double getDistance(double[] arg0){
+        return Math.sqrt(Math.pow(position[0] - arg0[0], 2) + Math.pow(position[1] - arg0[1],2));
     }
 }
