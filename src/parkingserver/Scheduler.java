@@ -41,7 +41,7 @@ public class Scheduler{
         }
         throw new ImpossibleReservationException();
     }
-    public synchronized void cancelReservation(Reservation r){
-        blocks.remove(r);
+    public synchronized boolean cancelReservation(Reservation r){
+        return blocks.remove(r);
     }
 }

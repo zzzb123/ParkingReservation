@@ -44,6 +44,17 @@ public class Lot{
         throw new ImpossibleReservationException();
     }
 
+    public void cancelReservation(Reservation r){
+        for(Scheduler s : normalSpots){
+            if(s.cancelReservation(r))
+                return;
+        }
+        for(Scheduler s : handicapSpots){
+            if(s.cancelReservation(r))
+                return;
+        }
+    }
+
     public void triggerRGC(TimePoint currentTime){
         for(Scheduler s : normalSpots){
             s.cullEntries(currentTime);
