@@ -3,7 +3,8 @@ public class Reservation{
     public TimePoint startTime;
     public TimePoint endTime;
     public User user;
-    public Reservation(TimePoint s, TimePoint e){
+    public Reservation(User u, TimePoint s, TimePoint e){
+        user = u;
         startTime = s;
         endTime = e;
     }

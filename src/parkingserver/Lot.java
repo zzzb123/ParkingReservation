@@ -32,7 +32,7 @@ public class Lot{
                 return;
             }
         }
-        throw new ImpossibleReservationException();
+        throw new ImpossibleReservationException("No Spots available on attempt to register normal spot -- check for proper synchronization");
     }
     public synchronized void reserveHandicapSpot(Reservation r)throws ImpossibleReservationException{
         for(Scheduler s : handicapSpots){
@@ -41,7 +41,7 @@ public class Lot{
                 return;
             }
         }
-        throw new ImpossibleReservationException();
+        throw new ImpossibleReservationException("No Spots available on attempt to register handicap spot -- check for proper synchronization");
     }
 
     public void cancelReservation(Reservation r){

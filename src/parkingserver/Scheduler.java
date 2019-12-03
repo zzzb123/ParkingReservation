@@ -15,7 +15,7 @@ public class Scheduler{
     }
     public synchronized void reserveTime(Reservation t) throws ImpossibleReservationException{
         if(!timeAvailable(t))
-            throw new ImpossibleReservationException();
+            throw new ImpossibleReservationException("error on attempt to register spot in scheduler -- make sure you verified an opening first and synchronized!");
         if(blocks.size() == 0)
             blocks.add(t);
         for(int i = 0; i < blocks.size(); ++i){
@@ -39,7 +39,7 @@ public class Scheduler{
             if(r.user.equals(u))
                 return r;
         }
-        throw new ImpossibleReservationException();
+        throw new ImpossibleReservationException("error on appempt to retreive a reservation -- verify its existance and make sure user is being kept up to date with the lots!");
     }
     public synchronized boolean cancelReservation(Reservation r){
         return blocks.remove(r);
