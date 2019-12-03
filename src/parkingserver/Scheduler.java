@@ -2,7 +2,7 @@ package parkingserver;
 
 import java.util.ArrayList;
 
-public class TimeBlocker{
+public class Scheduler{
     private ArrayList<Reservation> blocks = new ArrayList<>();
     public synchronized boolean timeAvailable(Reservation t){
         if(blocks.size() == 0)

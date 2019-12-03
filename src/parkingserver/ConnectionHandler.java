@@ -24,7 +24,7 @@ public class ConnectionHandler implements Runnable{
 			in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 			out = new PrintWriter(sock.getOutputStream(), true);
 			//Start of productive things
-				//TODO this is where the server interacts with the client.
+				//TODO this is where the server will eventually interact with the client.
 			//End of productive things
 		} catch (IOException e) {
 			System.out.println("Error in communication with client.  Assuming client Disconnected.");
