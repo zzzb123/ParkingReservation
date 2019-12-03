@@ -25,7 +25,7 @@ public class Server implements Runnable {
 		while(true){
 			try {
 				wait(1000 * 60 * 60 * 24);//last number is the number of hours to wait in between rgc cycles
-				TimePoint currentTime = new TimePoint(LocalDateTime.now().format(DateTimeFormatter.ofPattern("uuuu,MM,dd,HH")));
+				TimePoint currentTime = new TimePoint(LocalDateTime.now().format(DateTimeFormatter.ofPattern("uuuu,MM,dd,HH,mm")));
 				for(Lot l : lots.values()){
 					l.triggerRGC(currentTime);
 				}
