@@ -17,6 +17,7 @@ public class Server implements Runnable {
 	public static void main(String[] args) {
 		try {
 			loadLotsFile("lotfile.txt");
+			loadUserFile("userfile.txt");
 			//begin listening for connections
 			SSLServerSocket ssock = (SSLServerSocket) SSLServerSocketFactory.getDefault().createServerSocket(12345);
 			new Server().start();
@@ -75,7 +76,14 @@ public class Server implements Runnable {
 	public static void loadUserFile(String filename) throws Exception{//TODO finish implementing the user import feature
 		LinkedList<String> userdata = FileInteract.getFileContents(filename);
 		while(userdata.size() != 0){
-
+			userdata.remove(0);
+			String username = userdata.remove(0);
+			String email = userdata.remove(0);
+			String passhash = userdata.remove(0);
+			String identifier = userdata.remove(0);
+			if(identifier.equals("null"))
+				identifier = null;
+			users.put(username, new User(username,email,passhash,identifier));
 		}
 	}
 }
@@ -97,4 +105,23 @@ the number of spots (or an array containing the coordinates of the spots with th
 the geographical position of the lot
 */
 
+/*
+the user file is formatted like the following::
+<><><><><><><><><><><><>
+rdash2
+rdash2@masonlive.gmu.edu
+12876478326478723787324
+G01212083
+~borgarborgarborgarborgar~
+gmustudent
+gmustudent@gmu.edu
+743897389247893
+null
 
+following the format:
+a spacer line
+username
+email
+the hash of their password
+any identification needed (or null if none exists)
+*/
