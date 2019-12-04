@@ -19,10 +19,9 @@ public class User {
         this(user, email, pass, null);
     }
 
-    public Reservation generateReservation(TimePoint start, TimePoint end, Lot l){//creates a reservation that is bound to a given lot -- expected to be uploaded to the lot seprately
-        Reservation r = null;
-        reservations.put(r = new Reservation(this, start, end),l);
-        return r;
+    public void linkReservation(Reservation r, Lot l){//creates a reservation that is bound to a given lot -- expected to be already uploaded to the lot
+        r.user = this;
+        reservations.put(r,l);
     }
     
     @Override

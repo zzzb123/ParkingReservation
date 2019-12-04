@@ -7,8 +7,7 @@ public class Reservation implements Serializable{
     public TimePoint startTime;
     public TimePoint endTime;
     public User user;
-    public Reservation(User u, TimePoint s, TimePoint e){
-        user = u;
+    public Reservation(TimePoint s, TimePoint e){
         startTime = s;
         endTime = e;
     }
