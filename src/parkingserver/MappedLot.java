@@ -1,8 +1,8 @@
 package parkingserver;
 public class MappedLot extends Lot{
     private Scheduler[][] lotVisualization;
-    public MappedLot(SpotPlaceholder[][] template){
-        super(countNormal(template), countHandicap(template));
+    public MappedLot(String name, SpotPlaceholder[][] template, double[] pos){
+        super(name, countNormal(template), countHandicap(template), pos);
         lotVisualization = new Scheduler[template[0].length][template.length];
         int npos = 0;
         int hpos = 0;

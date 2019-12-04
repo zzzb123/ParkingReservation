@@ -38,4 +38,9 @@ public class TimePoint implements Comparable<TimePoint>{
             return res;
         return minute - arg0.minute;
     }
+
+    @Override
+    public boolean equals(Object arg0){
+        return compareTo((TimePoint)arg0) == 0;
+    }
 }
