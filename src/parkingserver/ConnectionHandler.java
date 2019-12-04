@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map.Entry;
 
 public class ConnectionHandler implements Runnable{
 	private Socket sock;
@@ -29,7 +31,7 @@ public class ConnectionHandler implements Runnable{
 			Lot targetlot = null;
 			Reservation reservation = null;
 			User user = null;
-			while(true){
+			toExit:while(true){
 				String command = in.readLine();
 				switch(command){
 					case "set-coordinates":
@@ -121,6 +123,15 @@ public class ConnectionHandler implements Runnable{
 							user.linkReservation(reservation, targetlot);
 						}
 						break;
+					case "disconnect": //lets make a way to prevent the server from throwing errors left and right during execution, shall we?
+						break toExit;
+					case "list-reservations":
+						for(Entry<Reservation,Lot> e : user.reservations.entrySet()){
+							out.println(e.getKey().startTime.getTime() + ":" + e.getKey().endTime.getTime() +  ":" + e.getValue().lotName);
+						}
+						break;
+					case "cancel-reservation":
+						targetlot.cancelReservation(reservation);
 				}
 			}
 			//End of productive things

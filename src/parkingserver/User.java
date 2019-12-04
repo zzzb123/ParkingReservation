@@ -7,7 +7,7 @@ public class User {
     public String password;
     public String email;
     public String identifier;
-    private HashMap<Reservation,Lot> reservations = new HashMap<>();
+    public HashMap<Reservation,Lot> reservations = new HashMap<>();
 
     public User(String username, String email, String password, String identifier){
         this.username = username;
