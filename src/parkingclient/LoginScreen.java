@@ -69,7 +69,7 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password :");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(400, 270, 160, 41);
+        jLabel4.setBounds(420, 270, 160, 41);
 
         jTextField1.setText("jTextField1");
         jPanel2.add(jTextField1);
@@ -87,7 +87,7 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(510, 430, 130, 49);
+        jButton1.setBounds(490, 430, 130, 50);
 
         jButton2.setFont(new java.awt.Font("Garamond", 0, 36)); // NOI18N
         jButton2.setText("Login");
@@ -97,7 +97,7 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton2);
-        jButton2.setBounds(720, 430, 130, 49);
+        jButton2.setBounds(710, 430, 130, 50);
 
         jLabel5.setFont(new java.awt.Font("Garamond", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));

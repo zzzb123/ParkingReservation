@@ -78,36 +78,71 @@ public class decks extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(50, 205, 50));
         jButton1.setText("Slot 1");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(0, 60, 130, 47);
 
         jButton2.setBackground(new java.awt.Color(50, 205, 50));
         jButton2.setText("Slot 6");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton2);
         jButton2.setBounds(0, 180, 130, 47);
 
         jButton3.setBackground(new java.awt.Color(50, 205, 50));
         jButton3.setText("Slot 11");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton3);
         jButton3.setBounds(0, 300, 129, 47);
 
         jButton4.setBackground(new java.awt.Color(50, 205, 50));
         jButton4.setText("Slot 16");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton4);
         jButton4.setBounds(0, 420, 129, 47);
 
         jButton5.setBackground(new java.awt.Color(50, 205, 50));
         jButton5.setText("Slot 21");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton5);
         jButton5.setBounds(0, 550, 129, 47);
 
         jButton6.setBackground(new java.awt.Color(50, 205, 50));
         jButton6.setText("Slot 2");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton6);
         jButton6.setBounds(200, 60, 130, 47);
 
         jButton7.setBackground(new java.awt.Color(30, 144, 255));
         jButton7.setText("Slot 3");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton7);
         jButton7.setBounds(420, 60, 130, 47);
 
@@ -118,76 +153,151 @@ public class decks extends javax.swing.JFrame {
 
         jButton9.setBackground(new java.awt.Color(50, 205, 50));
         jButton9.setText("Slot 5");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton9);
         jButton9.setBounds(850, 60, 130, 47);
 
         jButton10.setBackground(new java.awt.Color(50, 205, 50));
         jButton10.setText("Slot 7");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton10);
         jButton10.setBounds(200, 180, 130, 47);
 
         jButton11.setBackground(new java.awt.Color(50, 205, 50));
         jButton11.setText("Slot 8");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton11);
         jButton11.setBounds(420, 180, 130, 47);
 
         jButton12.setBackground(new java.awt.Color(50, 205, 50));
         jButton12.setText("Slot 9");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton12);
         jButton12.setBounds(650, 180, 130, 47);
 
         jButton13.setBackground(new java.awt.Color(50, 205, 50));
         jButton13.setText("Slot 10");
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton13);
         jButton13.setBounds(850, 180, 129, 47);
 
         jButton14.setBackground(new java.awt.Color(50, 205, 50));
         jButton14.setText("Slot 12");
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton14);
         jButton14.setBounds(200, 300, 129, 47);
 
         jButton15.setBackground(new java.awt.Color(50, 205, 50));
         jButton15.setText("Slot 13");
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton15);
         jButton15.setBounds(420, 300, 129, 47);
 
         jButton16.setBackground(new java.awt.Color(50, 205, 50));
         jButton16.setText("Slot 14");
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton16MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton16);
         jButton16.setBounds(650, 300, 129, 47);
 
         jButton17.setBackground(new java.awt.Color(50, 205, 50));
         jButton17.setText("Slot 15");
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton17MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton17);
         jButton17.setBounds(850, 300, 130, 47);
 
         jButton18.setBackground(new java.awt.Color(50, 205, 50));
         jButton18.setText("Slot 17");
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton18MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton18);
         jButton18.setBounds(200, 420, 129, 47);
 
         jButton19.setBackground(new java.awt.Color(50, 205, 50));
         jButton19.setText("Slot 18");
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton19MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton19);
         jButton19.setBounds(420, 420, 129, 47);
 
         jButton20.setBackground(new java.awt.Color(50, 205, 50));
         jButton20.setText("Slot 19");
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton20MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton20);
         jButton20.setBounds(650, 420, 129, 47);
 
         jButton21.setBackground(new java.awt.Color(50, 205, 50));
         jButton21.setText("Slot 20");
+        jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton21MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton21);
         jButton21.setBounds(850, 420, 130, 47);
 
         jButton22.setBackground(new java.awt.Color(50, 205, 50));
         jButton22.setText("Slot 22");
+        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton22MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton22);
         jButton22.setBounds(200, 550, 129, 47);
 
         jButton23.setBackground(new java.awt.Color(30, 144, 255));
         jButton23.setText("Slot 23");
+        jButton23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton23MouseClicked(evt);
+            }
+        });
         jButton23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton23ActionPerformed(evt);
@@ -198,11 +308,21 @@ public class decks extends javax.swing.JFrame {
 
         jButton24.setBackground(new java.awt.Color(30, 144, 255));
         jButton24.setText("Slot 24");
+        jButton24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton24MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton24);
         jButton24.setBounds(650, 550, 129, 47);
 
         jButton25.setBackground(new java.awt.Color(50, 205, 50));
         jButton25.setText("Slot 25");
+        jButton25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton25MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton25);
         jButton25.setBounds(850, 550, 130, 47);
 
@@ -269,6 +389,148 @@ public class decks extends javax.swing.JFrame {
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+DandT d = new DandT();
+        d.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton15MouseClicked
+
+    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton16MouseClicked
+
+    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton17MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton18MouseClicked
+
+    private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton19MouseClicked
+
+    private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton20MouseClicked
+
+    private void jButton21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton21MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton22MouseClicked
+
+    private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
+DandT d = new DandT();
+        d.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton23MouseClicked
+
+    private void jButton24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton24MouseClicked
+
+    private void jButton25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseClicked
+        // TODO add your handling code here:
+        DandT d = new DandT();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton25MouseClicked
 
     /**
      * @param args the command line arguments

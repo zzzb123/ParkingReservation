@@ -10,7 +10,7 @@ package newpackage;
  * @author Ritika
  */
 public class Menu1 extends javax.swing.JFrame {
-
+    String y = new String();
     /**
      * Creates new form Menu1
      */
@@ -72,6 +72,11 @@ public class Menu1 extends javax.swing.JFrame {
         jLabel2.setBounds(-50, -110, 960, 810);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose nearest location", "Engineering Building", "Johnson Center", "Fenwick Library", "Exploratory/Enterprise/Planetary Hall", "SUB-1", "HUB", "Peterson,Merten", "Aquia/East/ Lecture Hall", "President's Park", "The Commons" }));
+        jComboBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox2MouseClicked(evt);
+            }
+        });
         jPanel2.add(jComboBox2);
         jComboBox2.setBounds(920, 40, 340, 45);
 
@@ -111,7 +116,14 @@ public class Menu1 extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        decks d = new decks();
+        d.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox2MouseClicked
+        // TODO add your handling code here:
+        String y = (String) jComboBox2.getSelectedItem();
+    }//GEN-LAST:event_jComboBox2MouseClicked
 
     /**
      * @param args the command line arguments
