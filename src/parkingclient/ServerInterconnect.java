@@ -7,8 +7,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.LinkedList;
 
-import javax.net.ssl.SSLSocketFactory;
-
 public class ServerInterconnect {
     private Socket connection;
     private BufferedReader in;
