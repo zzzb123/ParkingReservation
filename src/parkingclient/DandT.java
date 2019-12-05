@@ -28,13 +28,23 @@ public class DandT extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jCalendar2 = new com.toedter.calendar.JCalendar();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ritika\\Documents\\NetBeansProjects\\ParkingGUI\\src\\newpackage\\pp.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ritika\\Documents\\NetBeansProjects\\ParkingGUI\\src\\newpackage\\pp.jpg")); // NOI18N
+        jLabel2.setText("Go Back");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ritika\\Documents\\NetBeansProjects\\ParkingGUI\\src\\newpackage\\pp.jpg")); // NOI18N
+        jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,7 +58,7 @@ public class DandT extends javax.swing.JFrame {
         jPanel2.add(jCalendar2);
         jCalendar2.setBounds(80, 80, 630, 480);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pick time slot", "30 mins", "1 hr", "1 hr 30 mins", "2 hrs", "2 hrs 30 mins", "3 mins" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pick start time", "7:00 am", "8:00 am", "9:00 am", "10:00 am", "11:00 am", "12:00 am", "1:00 pm", "2:00 pm", "3:00 pm", "4:00 pm", "5:00 pm", "6:00 pm", "7:00 pm", " " }));
         jComboBox2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jComboBox2MouseClicked(evt);
@@ -57,18 +67,31 @@ public class DandT extends javax.swing.JFrame {
         jPanel2.add(jComboBox2);
         jComboBox2.setBounds(860, 80, 340, 45);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ritika\\Documents\\NetBeansProjects\\ParkingGUI\\src\\newpackage\\pp.jpg")); // NOI18N
-        jLabel2.setText("jLabel2");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(0, -20, 1380, 810);
+        jButton1.setText("OK");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(940, 490, 153, 47);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose duration", "30 mins", "1 hr", "1.5 hrs", "2 hrs ", "2.5 hrs", "3 hrs", " ", " " }));
+        jPanel2.add(jComboBox1);
+        jComboBox1.setBounds(860, 300, 340, 45);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ritika\\Documents\\NetBeansProjects\\ParkingGUI\\src\\newpackage\\pp.jpg")); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(0, -90, 1400, 950);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1376, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1400, Short.MAX_VALUE)
+                .addGap(7, 7, 7))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,6 +116,12 @@ public class DandT extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jCalendar2MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        confirm d = new confirm();
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -131,10 +160,14 @@ public class DandT extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JCalendar jCalendar2;
+    private javax.swing.JComboBox<String> jComboBox1;
     public javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

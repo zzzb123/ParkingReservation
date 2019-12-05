@@ -31,7 +31,6 @@ public class confirm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,15 +41,9 @@ public class confirm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Garamond", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Your registration has been confirmed.");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(420, 360, 540, 41);
-
-        jLabel4.setFont(new java.awt.Font("Garamond", 0, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Confirmation of your Reservation");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(420, 70, 490, 50);
 
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ritika\\Documents\\NetBeansProjects\\ParkingGUI\\src\\newpackage\\pp.jpg")); // NOI18N
         jLabel5.setText("jLabel5");
@@ -125,7 +118,6 @@ public class confirm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

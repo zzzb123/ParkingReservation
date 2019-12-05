@@ -126,6 +126,11 @@ public class RegisterScreen extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Garamond", 0, 36)); // NOI18N
         jButton1.setText("Cancel");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel2.add(jButton1);
         jButton1.setBounds(325, 440, 140, 50);
 
@@ -179,6 +184,11 @@ public class RegisterScreen extends javax.swing.JFrame {
         rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
