@@ -139,6 +139,8 @@ public class ConnectionHandler implements Runnable{
 						targetlot.cancelReservation(reservation);
 						user.reservations.remove(reservation);
 						break;
+					default:
+						System.out.println("unknown command entered");
 				}
 			}
 			//End of productive things
