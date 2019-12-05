@@ -70,9 +70,11 @@ public class ConnectionHandler implements Runnable{
 						for(Lot l : Server.lots){
 							if(l.lotName.equals(name)){
 								targetlot = l;
+								out.println("ok");
 								break;
 							}
 						}
+						out.println("sorry");
 						break;
 					case "register-user":
 						username = in.readLine();
@@ -108,10 +110,12 @@ public class ConnectionHandler implements Runnable{
 						}
 						break;
 					case "reserve-spot":
+						try{
 						if(targetlot instanceof MappedLot){
 							Scheduler[][] lotmap = ((MappedLot)targetlot).getLotVisualization();
 							coord = in.readLine().split(",");
 							lotmap[Integer.parseInt(coord[0])][Integer.parseInt(coord[1])].reserveTime(reservation);
+							user.linkReservation(reservation, targetlot);
 						}
 						else{
 							String type = in.readLine();
@@ -121,6 +125,8 @@ public class ConnectionHandler implements Runnable{
 								targetlot.reserveHandicapSpot(reservation);
 							user.linkReservation(reservation, targetlot);
 						}
+						out.println("ok");
+						}catch(Exception e){out.println("error");}
 						break;
 					case "disconnect": //lets make a way to prevent the server from throwing errors left and right during execution, shall we?
 						break toExit;
@@ -128,9 +134,12 @@ public class ConnectionHandler implements Runnable{
 						for(Entry<Reservation,Lot> e : user.reservations.entrySet()){
 							out.println(e.getKey().startTime.getTime() + ":" + e.getKey().endTime.getTime() +  ":" + e.getValue().lotName);
 						}
+						out.println("ok");
 						break;
 					case "cancel-reservation":
 						targetlot.cancelReservation(reservation);
+						user.reservations.remove(reservation);
+						break;
 				}
 			}
 			//End of productive things

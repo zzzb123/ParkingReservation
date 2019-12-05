@@ -16,4 +16,9 @@ public class Reservation implements Serializable{
         Reservation r = (Reservation)arg0;
         return startTime.equals(r.startTime) && endTime.equals(r.endTime);
     }
+
+    @Override
+    public int hashCode(){
+        return new String(startTime.hashCode() + "" + endTime.hashCode()).hashCode();
+    }
 }
