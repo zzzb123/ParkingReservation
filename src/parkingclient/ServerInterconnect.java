@@ -21,7 +21,7 @@ public class ServerInterconnect {
 
     public ServerInterconnect() {
         try {
-            connection = SSLSocketFactory.getDefault().createSocket("localhost", 12345);
+            connection = new Socket("localhost", 12345);
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             out = new PrintWriter(connection.getOutputStream(), true);
         } catch (Exception e) {
