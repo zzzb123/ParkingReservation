@@ -36,11 +36,11 @@ public class ServerInterconnect {
         coordSet = true;
     }
 
-    public boolean setUser(String username, String passhash) {
+    public boolean setUser(String username, String password) {
         try {
             out.println("set-user");
             out.println(username);
-            out.println(passhash);
+            out.println(password);
             if (in.readLine().equals("sorry"))
                 return false;
             userSet = true;
@@ -69,11 +69,12 @@ public class ServerInterconnect {
         return false;
     }
 
-    public String[] listLots() throws ActionOutOfOrderException {
+    public String[] listLots(int num) throws ActionOutOfOrderException {
         if (!reservationSet || !coordSet) {
             throw new ActionOutOfOrderException();
         }
         out.println("get-lots");
+        out.println(num);
         try {
             return in.readLine().split("::");
         } catch (IOException e) {}
@@ -84,7 +85,7 @@ public class ServerInterconnect {
         out.println("register-user");
         out.println(username);
         out.println(email);
-        out.println(password.hashCode());
+        out.println(password);
         out.println(identification);
         try{
             if(in.readLine().equals("ok")){

@@ -32,7 +32,7 @@ public class ConnectionHandler implements Runnable{
 			User user = null;
 			toExit:while(true){
 				String command = in.readLine();
-				switch(command){
+				swi:switch(command){
 					case "set-coordinates":
 						String[] coord = in.readLine().split(",");
 						double [] coords = new double[]{Double.parseDouble(coord[0]), Double.parseDouble(coord[1])};
@@ -57,12 +57,11 @@ public class ConnectionHandler implements Runnable{
 					case "get-lots":
 						int numlots = Integer.parseInt(in.readLine());
 						String res = "";
-						if(numlots < Server.lots.size())
-							for(int i = 0; i < numlots; i++){
-								res += sortedlots.get(i).lotName + "\t" + sortedlots.get(i).getNormalOpenings(reservation) + "," + sortedlots.get(i).getHandicapOpenings(reservation);
-								if(i < numlots-1)
-									res+="::";
-							}
+						for(int i = 0; i < Math.min(numlots, sortedlots.size()); i++){
+							res += sortedlots.get(i).lotName + "\t" + sortedlots.get(i).getNormalOpenings(reservation) + "," + sortedlots.get(i).getHandicapOpenings(reservation);
+							if(i < numlots-1)
+								res+="::";
+						}
 						out.println(res);
 						break;
 					case "set-target-lot":
@@ -71,7 +70,7 @@ public class ConnectionHandler implements Runnable{
 							if(l.lotName.equals(name)){
 								targetlot = l;
 								out.println("ok");
-								break;
+								break swi;
 							}
 						}
 						out.println("sorry");
@@ -106,7 +105,7 @@ public class ConnectionHandler implements Runnable{
 							out.println(res);
 						}
 						else{
-							out.println(targetlot.getNormalSpots() + "," + targetlot.getHandicapSpots());
+							out.println(targetlot.getNormalOpenings(reservation) + "," + targetlot.getHandicapOpenings(reservation));
 						}
 						break;
 					case "reserve-spot":
@@ -136,7 +135,7 @@ public class ConnectionHandler implements Runnable{
 						}
 						out.println("ok");
 						break;
-					case "cancel-reservation":
+					case "cancel-reservation"://TODO known bad implementation
 						targetlot.cancelReservation(reservation);
 						user.reservations.remove(reservation);
 						break;

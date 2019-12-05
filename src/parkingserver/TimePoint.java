@@ -43,4 +43,8 @@ public class TimePoint implements Comparable<TimePoint>{
     public boolean equals(Object arg0){
         return compareTo((TimePoint)arg0) == 0;
     }
+
+    public int hashCode(){
+        return getTime().hashCode();
+    }
 }

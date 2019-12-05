@@ -1,5 +1,6 @@
 package parkingserver;
 
+import java.net.ServerSocket;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -8,20 +9,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.net.ssl.SSLServerSocket;
-import javax.net.ssl.SSLServerSocketFactory;
-
 public class Server implements Runnable {
 	public static List<Lot> lots = Collections.synchronizedList(new ArrayList<Lot>());
 	public static ConcurrentHashMap<String,User> users = new ConcurrentHashMap<>();
 	public static void main(String[] args) {
 		try {
 			loadLotsFile("lotfile.txt");
-			loadUserFile("userfile.txt");
+			//loadUserFile("userfile.txt");
 			//begin listening for connections
-			SSLServerSocket ssock = (SSLServerSocket) SSLServerSocketFactory.getDefault().createServerSocket(12345);
-			new Server().start();
-			while (ssock.isBound()) {
+			ServerSocket ssock = new ServerSocket(12345);
+			//new Server().start();
+			while (true) {
 				new ConnectionHandler().start(ssock.accept());
 			}
 		} catch (Exception e) {
@@ -95,7 +93,7 @@ Lot A
 6.0000023,12.87778754
 <><><><><><><><><><><><>
 Lot B
-4,4:1,1:2,2:3,3:0,0
+4,4:1,1,h:2,2,n:3,3,h:0,0,n
 1.0,12.5
 
 The lot data is as follows:
