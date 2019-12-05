@@ -1,6 +1,8 @@
 package parkingclient;
 public class ActionOutOfOrderException extends Exception{
-    public ActionOutOfOrderException(String message){
+    private static final long serialVersionUID = 1L;
+
+    public ActionOutOfOrderException(String message) {
         super(message);
     }
     public ActionOutOfOrderException(){}
