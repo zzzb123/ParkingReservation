@@ -15,7 +15,7 @@ public class Lot{
         this.lotName = name;
     }
 
-    public int getNumOpenings(Reservation r){
+    public int getNormalOpenings(Reservation r){
         int count = 0;
         for(Scheduler s : normalSpots){
             if(s.timeAvailable(r))
@@ -23,12 +23,13 @@ public class Lot{
         }
         return count;
     }
-    public boolean hasHandicapSpots(Reservation r){
+    public int getHandicapOpenings(Reservation r){
+        int count = 0;
         for(Scheduler s : handicapSpots){
             if(s.timeAvailable(r))
-                return true;
+                count++;
         }
-        return false;
+        return count;
     }
     public synchronized void reserveNormalSpot(Reservation r)throws ImpossibleReservationException{
         for(Scheduler s : normalSpots){

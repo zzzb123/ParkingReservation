@@ -45,8 +45,7 @@ public class ServerInterconnect {
                 return false;
             userSet = true;
             return true;
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
         return false;
     }
 
@@ -70,23 +69,15 @@ public class ServerInterconnect {
         return false;
     }
 
-    public String[][] listLots() throws ActionOutOfOrderException {
-        if (!targetLotSet || !reservationSet || !coordSet) {
+    public String[] listLots() throws ActionOutOfOrderException {
+        if (!reservationSet || !coordSet) {
             throw new ActionOutOfOrderException();
         }
         out.println("get-lots");
-        String[][] dataset = null;
         try {
-            String[] elems = in.readLine().split("::");
-            dataset = new String[2][elems.length];
-            int counter = 0;
-            for(String s : elems){
-                String[] lot = s.split("//");
-                dataset[0][counter] = lot[0];
-                dataset[1][counter++] = lot[1];
-            }
+            return in.readLine().split("::");
         } catch (IOException e) {}
-        return dataset;
+        return null;
     }
 
     public boolean registerUser(String username, String email, String identification, String password){

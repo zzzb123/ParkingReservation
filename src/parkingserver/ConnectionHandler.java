@@ -59,7 +59,7 @@ public class ConnectionHandler implements Runnable{
 						String res = "";
 						if(numlots < Server.lots.size())
 							for(int i = 0; i < numlots; i++){
-								res += sortedlots.get(i).lotName + "//" + sortedlots.get(i).getNumOpenings(reservation);
+								res += sortedlots.get(i).lotName + "\t" + sortedlots.get(i).getNormalOpenings(reservation) + "," + sortedlots.get(i).getHandicapOpenings(reservation);
 								if(i < numlots-1)
 									res+="::";
 							}
