@@ -12,7 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
     static ServerInterconnect server = new ServerInterconnect();
 
     @Override
@@ -110,8 +109,12 @@ public class Main extends Application {
 
         overallDisplay.getChildren().addAll(topDisplay, bottomDisplay);
 
-        Scene registrationScene = new Scene(overallDisplay, 500, 350);
+        Scene registrationScene = new Scene(overallDisplay, 750, 500);
         primaryStage.setScene(registrationScene);
+
+        cancelButton.setOnAction(e -> {
+            loginMenu(primaryStage);
+        });
 
         submitButton.setOnAction(e -> {
             if(passwordField.getText().equals(repasswordField.getText())) {
@@ -137,12 +140,47 @@ public class Main extends Application {
         searchField.setPromptText("Closest lots to: ");
 
         Button searchButton = new Button("Search");
-        upperRight.getChildren().addAll(searchButton, searchButton);
+        upperRight.getChildren().addAll(searchField, searchButton);
+        rightPane.getChildren().add(upperRight);
 
-        
+        Button timeButton = new Button("Set Time");
+        rightPane.getChildren().add(timeButton);
+
+        timeButton.setOnAction(e -> {
+            if(TimeAlertBox.display()) {
+                timeButton.setText("Change Time");
+            }
+        });
+
+        ListView<Button> middleRight = new ListView<Button>();
+        ObservableList<Button> listViewItems = FXCollections.observableArrayList();
+        middleRight.setItems(listViewItems);
+
+        searchButton.setOnAction(e -> {
+            if(timeButton.getText().equals("Change Time")) {
+                try {
+                    String[] lotArray;
+                    server.setPosition(FindCoordinates.getCoordinates(searchField.getText()));
+                    lotArray = server.listLots(8);
+                    for(int i = 0; i < Math.min(6, lotArray.length); i++) {
+                        listViewItems.add(new Button(lotArray[i]));
+                    }
+                } catch(Exception ex) {
+                    System.out.println("Google servers are down; there is no more internet, there is no more world.");
+                }
+            } else {
+                //TODO: Display alert to select a time
+            }
+        });
+
+        rightPane.getChildren().add(middleRight);
+
+        Button bottomRight = new Button("Display Current Reservations");
+        rightPane.getChildren().add(bottomRight);
         overallLayout.setRight(rightPane);
 
-        Scene mainScene = new Scene(overallLayout);
+        Scene mainScene = new Scene(overallLayout, 750, 500);
+        primaryStage.setScene(mainScene);
 
     }
 }
