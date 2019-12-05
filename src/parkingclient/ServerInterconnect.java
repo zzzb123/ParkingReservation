@@ -37,16 +37,17 @@ public class ServerInterconnect {
     }
 
     public boolean setUser(String username, String passhash) {
-        out.println("set-user");
-        out.println(username);
-        out.println(passhash);
         try {
+            out.println("set-user");
+            out.println(username);
+            out.println(passhash);
             if (in.readLine().equals("sorry"))
                 return false;
+            userSet = true;
+            return true;
         } catch (Exception e) {
         }
-        userSet = true;
-        return true;
+        return false;
     }
 
     public void setReservation(String startTime, String endTime) {
