@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - LoginScreen",
+            "request": "launch",
+            "mainClass": "secondary_code.LoginScreen",
+            "projectName": "ParkingReservation"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - confirm",
+            "request": "launch",
+            "mainClass": "secondary_code.confirm",
+            "projectName": "ParkingReservation"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Server",
             "request": "launch",
             "mainClass": "parkingserver.Server",
