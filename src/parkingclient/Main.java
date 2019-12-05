@@ -1,4 +1,4 @@
-package sample;
+package parkingclient;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
