@@ -1,18 +1,33 @@
-package parkingclient;
+package sample;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
 public class Main extends Application {
-    static ServerInterconnect server = new ServerInterconnect();
+
+    public static boolean isTimeCorrectlySet = false;
+
+    public static ServerInterconnect server = new ServerInterconnect();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,8 +42,9 @@ public class Main extends Application {
 
     public void loginMenu(Stage primaryStage) {
 
-        VBox overallDisplay = new VBox();
-        VBox topDisplay = new VBox();
+        VBox overallDisplay = new VBox(10);
+        overallDisplay.setPrefWidth(250);
+        VBox topDisplay = new VBox(5);
 
         Label invalidUserNameWarning = new Label(" ");
         topDisplay.getChildren().add(invalidUserNameWarning);
@@ -44,7 +60,8 @@ public class Main extends Application {
         passwordField.setPromptText("Password");
         topDisplay.getChildren().add(passwordField);
 
-        HBox bottomDisplay = new HBox();
+        HBox bottomDisplay = new HBox(10);
+        bottomDisplay.setAlignment(Pos.CENTER);
 
         Button loginButton = new Button("Login");
         bottomDisplay.getChildren().add(loginButton);
@@ -55,6 +72,7 @@ public class Main extends Application {
         overallDisplay.getChildren().addAll(topDisplay, bottomDisplay);
 
         Scene loginScene = new Scene(overallDisplay, 500, 350);
+        loginScene.getStylesheets().add("sample/styles.css");
 
         primaryStage.setScene(loginScene);
         primaryStage.show();
@@ -132,9 +150,10 @@ public class Main extends Application {
     public void mainMenu(Stage primaryStage) {
         BorderPane overallLayout = new BorderPane();
 
-        VBox rightPane = new VBox();
+        VBox rightPane = new VBox(5);
 
-        HBox upperRight = new HBox();
+        HBox upperRight = new HBox(5);
+        upperRight.setAlignment(Pos.CENTER);
 
         TextField searchField = new TextField();
         searchField.setPromptText("Closest lots to: ");
@@ -145,12 +164,18 @@ public class Main extends Application {
 
         Button timeButton = new Button("Set Time");
         rightPane.getChildren().add(timeButton);
+        timeButton.setPrefWidth(250);
 
         timeButton.setOnAction(e -> {
-            if(TimeAlertBox.display()) {
+            TimeAlertBox.display();
+            if(isTimeCorrectlySet) {
                 timeButton.setText("Change Time");
             }
         });
+
+        WebView webView = new WebView();
+        webView.getEngine().load(getClass().getResource("GoogleMap.html").toString());
+        overallLayout.setCenter(webView);
 
         ListView<Button> middleRight = new ListView<Button>();
         ObservableList<Button> listViewItems = FXCollections.observableArrayList();
@@ -169,7 +194,18 @@ public class Main extends Application {
                     System.out.println("Google servers are down; there is no more internet, there is no more world.");
                 }
             } else {
-                //TODO: Display alert to select a time
+                Stage alertWindow = new Stage();
+
+                alertWindow.initModality(Modality.APPLICATION_MODAL);
+                alertWindow.setTitle("Pick a Time");
+                alertWindow.setWidth(150);
+
+                Label setTime = new Label("Warning: Please set a specified time before searching");
+                VBox layout = new VBox();
+                layout.getChildren().add(setTime);
+
+                Scene alertSetTimeScene = new Scene(layout, 150, 100);
+                alertWindow.setScene(alertSetTimeScene);
             }
         });
 
