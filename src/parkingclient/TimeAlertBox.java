@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -27,7 +28,7 @@ public class TimeAlertBox {
         alertWindow.setWidth(500);
         alertWindow.setMinWidth(250);
 
-        VBox alertLayout = new VBox();
+        VBox alertLayout = new VBox(10);
 
         HBox upperUpperAlertLayout = new HBox();
 
@@ -85,15 +86,16 @@ public class TimeAlertBox {
         minutesLengthBox.setValue("00");
         Label minutesLengthLabel = new Label(" Minutes\t");
 
-        Button submitButton = new Button("Submit");
-        Button cancelButton = new Button("Cancel");
-
-        lowerLowerAlertLayout.getChildren().addAll(submitButton, cancelButton);
 
         lowerLowerAlertLayout.getChildren().addAll(hoursLengthBox, hoursLengthLabel, minutesLengthBox, minutesLengthLabel);
 
+        HBox lowestAlertLayout = new HBox(10);
+        Button submitButton = new Button("Submit");
+        Button cancelButton = new Button("Cancel");
+        lowestAlertLayout.getChildren().addAll(submitButton, cancelButton);
+        lowestAlertLayout.setAlignment(Pos.CENTER);
 
-        alertLayout.getChildren().addAll(upperUpperAlertLayout, upperAlertLayout, lowerAlertLayout, lowerLowerAlertLayout);
+        alertLayout.getChildren().addAll(upperUpperAlertLayout, upperAlertLayout, lowerAlertLayout, lowerLowerAlertLayout, lowestAlertLayout);
 
         Scene alertScene = new Scene(alertLayout, 400, 280);
 
@@ -128,7 +130,7 @@ public class TimeAlertBox {
 
         });
 
-
+        alertLayout.setStyle("-fx-padding: 0 50 0 50");
         alertWindow.setScene(alertScene);
         alertWindow.showAndWait();
 
