@@ -143,6 +143,9 @@ public class ConnectionHandler implements Runnable{
 						targetlot.cancelReservation(reservation);
 						user.reservations.remove(reservation);
 						break;
+					case "fix-reservation":
+						reservation = new Reservation(reservation.startTime, reservation.endTime);
+						break;
 					default:
 						System.out.println("unknown command entered");
 				}

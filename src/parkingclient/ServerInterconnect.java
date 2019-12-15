@@ -142,4 +142,8 @@ public class ServerInterconnect {
         }
         out.println("cancel-reservation");
     }
+
+    public void fixReservationSystem(){
+        out.println("fix-reservation");
+    }
 }
