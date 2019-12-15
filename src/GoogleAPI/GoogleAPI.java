@@ -1,8 +1,11 @@
-import java.net.*;
-import org.json.simple.*;
-import java.io.*;
-import java.net.http.HttpRequest;
-import java.util.*;
+package GoogleAPI;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Scanner;
 
 public class GoogleAPI {
 
