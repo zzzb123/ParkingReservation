@@ -1,5 +1,10 @@
 package sample;
 
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.MonthDay;
+import java.time.format.DateTimeFormatter;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -28,8 +33,15 @@ public class RegistrationAlertBox {
         VBox overallLayout = new VBox(5);
         overallLayout.setStyle("-fx-padding: 0 50 0 50");
 
+        String[] unparsedTimes = lotObject.readytimes.split(":");
+        String[] timedata1 = unparsedTimes[0].split(",");
+        String[] timedata2 = unparsedTimes[1].split(",");
+        LocalDateTime time1 = LocalDateTime.of(Integer.parseInt(timedata1[0]),Month.of(Integer.parseInt(timedata1[1])),Integer.parseInt(timedata1[2]),Integer.parseInt(timedata1[3]), Integer.parseInt(timedata1[4]));
+        LocalDateTime time2 = LocalDateTime.of(Integer.parseInt(timedata2[0]),Month.of(Integer.parseInt(timedata2[1])),Integer.parseInt(timedata2[2]),Integer.parseInt(timedata2[3]), Integer.parseInt(timedata2[4]));
+        String timeString = time1.getMonthValue() + "/" + time1.getDayOfMonth() + " at " + time1.format(DateTimeFormatter.ofPattern("hh:mm aa"))
+             + " to " + time2.getMonthValue() + "/" + time2.getDayOfMonth() + " at " + time2.format(DateTimeFormatter.ofPattern("hh:mm aa"));
 
-        Label nameAndTimeHeader = new Label(lotObject.name + " from " + lotObject.readytimes);
+        Label nameAndTimeHeader = new Label(lotObject.name + " from " + timeString);
         nameAndTimeHeader.setUnderline(true);
         overallLayout.getChildren().add(nameAndTimeHeader);
 
