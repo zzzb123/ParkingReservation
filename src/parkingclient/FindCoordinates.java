@@ -1,4 +1,4 @@
-package sample;
+package parkingclient;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

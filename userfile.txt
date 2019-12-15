@@ -1,0 +1,15 @@
+USER INFORMATION::
+testuser1
+test@gmail.com
+the_entire_brittish_royal_navy
+PLATE-NO
+
+testuser2
+helloworld@hotmail.ru
+password
+NOT-BRIGHT
+
+test
+test@test.test
+test
+plate-info

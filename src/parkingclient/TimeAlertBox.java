@@ -1,4 +1,4 @@
-package sample;
+package parkingclient;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

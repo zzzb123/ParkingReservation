@@ -15,7 +15,7 @@ public class Server implements Runnable {
 	public static void main(String[] args) {
 		try {
 			loadLotsFile("lotfile.txt");
-			//loadUserFile("userfile.txt");
+			loadUserFile("userfile.txt");
 			//begin listening for connections
 			ServerSocket ssock = new ServerSocket(12345);
 			new Server().start();//start old reservation gc
