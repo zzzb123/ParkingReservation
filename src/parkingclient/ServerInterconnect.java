@@ -106,23 +106,16 @@ public class ServerInterconnect {
     }
 
     public boolean reserveSpot(Spot s) throws ActionOutOfOrderException{
-        if(!targetLotSet || !userSet)
-            throw new ActionOutOfOrderException();
+        //TODO reserving a mapped spot is not implemented
+        return false;
+    }
+
+    public boolean reserveSpot(boolean normalSpot){
         out.println("reserve-spot");
-        if(s == Lot.unmappedNormalSpot){
-            out.println("normal");
-        }
-        else if(s == Lot.unmappedHandicapSpot){
-            out.println("handicap");
-        }
-        else{
-            out.println(s.coords[0] + "," + s.coords[1]);
-        }
+        out.println((normalSpot?"normal":"handicap"));
         try{
-            if(in.readLine().equals("error"))
-                return false;
-        }catch(Exception e){}
-        return true;
+        return in.readLine().equals("ok");
+        }catch(Exception e){return false;}
     }
 
     public void disconnect(){

@@ -32,6 +32,7 @@ public class Server implements Runnable {
 		} catch (Exception e) {
 			System.out.println(
 					"Error on startup, check the formatting on the preloaded files and your network permissions");
+			e.printStackTrace();
 		}
 	}
 

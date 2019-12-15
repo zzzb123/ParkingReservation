@@ -106,7 +106,7 @@ public class ConnectionHandler implements Runnable{
 							out.println(res);
 						}
 						else{
-							out.println(targetlot.getNormalOpenings(reservation) + "," + targetlot.getHandicapOpenings(reservation));
+							out.println(targetlot.lotName + "\t" + reservation.startTime + "\t" + reservation.endTime + "\t" + targetlot.getNormalOpenings(reservation) + "\t" + targetlot.getHandicapOpenings(reservation));
 						}
 						break;
 					case "reserve-spot":
@@ -119,11 +119,14 @@ public class ConnectionHandler implements Runnable{
 						}
 						else{
 							String type = in.readLine();
+							try{
 							if(type.equals("normal"))
 								targetlot.reserveNormalSpot(reservation);
 							else
 								targetlot.reserveHandicapSpot(reservation);
 							user.linkReservation(reservation, targetlot);
+							out.println("ok");
+							}catch(Exception e){out.println("sorry");}
 						}
 						out.println("ok");
 						}catch(Exception e){out.println("error");}
