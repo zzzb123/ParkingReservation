@@ -1,21 +1,21 @@
 package parkingclient;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class TimeAlertBox {
     public static void display() {
@@ -48,17 +48,17 @@ public class TimeAlertBox {
             }
         }
 
-        ComboBox hoursBox = new ComboBox(possibleHours);
+        ComboBox<String> hoursBox = new ComboBox<>(possibleHours);
         hoursBox.setPromptText("12");
 
         Label colonLabel = new Label(" : ");
 
         ObservableList<String> possibleMinutes = FXCollections.observableArrayList("00", "30");
-        ComboBox minutesBox = new ComboBox(possibleMinutes);
+        ComboBox<String> minutesBox = new ComboBox<>(possibleMinutes);
         minutesBox.setPromptText("00");
 
         ObservableList<String> amOrPM = FXCollections.observableArrayList("AM", "PM");
-        ComboBox amOrPMBox = new ComboBox(amOrPM);
+        ComboBox<String> amOrPMBox = new ComboBox<>(amOrPM);
         amOrPMBox.setPromptText("PM");
 
         upperAlertLayout.getChildren().addAll(hoursBox, colonLabel, minutesBox, amOrPMBox);
@@ -75,12 +75,12 @@ public class TimeAlertBox {
             hoursLength.add("0" + i);
         }
 
-        ComboBox hoursLengthBox = new ComboBox(hoursLength);
+        ComboBox<String> hoursLengthBox = new ComboBox<>(hoursLength);
         hoursLengthBox.setPromptText("01");
         Label hoursLengthLabel = new Label(" Hours\t");
 
         ObservableList<String> minutesLength = FXCollections.observableArrayList("00", "30");
-        ComboBox minutesLengthBox = new ComboBox(minutesLength);
+        ComboBox<String> minutesLengthBox = new ComboBox<>(minutesLength);
         minutesLengthBox.setPromptText("00");
         Label minutesLengthLabel = new Label(" Minutes\t");
 

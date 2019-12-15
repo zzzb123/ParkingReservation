@@ -18,26 +18,27 @@ public class Server implements Runnable {
 			//loadUserFile("userfile.txt");
 			//begin listening for connections
 			ServerSocket ssock = new ServerSocket(12345);
-			//new Server().start();
-			while (true) {
+			new Server().start();//start old reservation gc
+			while (!ssock.isClosed()) {
 				new ConnectionHandler().start(ssock.accept());
 			}
+			ssock.close();
 		} catch (Exception e) {
 			System.out.println("Error on startup, either the lot geodata is messed up or there was an error with SSL.");
 		}
 	}
 
 	public void run() {//reservation garbage collector -- ensures that stale reservations dont build up too much
-		while(true){
-			try {
+		try {
+			while(true){
 				wait(1000 * 60 * 60 * 24);//last number is the number of hours to wait in between rgc cycles
 				TimePoint currentTime = new TimePoint(LocalDateTime.now().format(DateTimeFormatter.ofPattern("uuuu,MM,dd,HH,mm")));
 				for(Lot l : lots){
 					l.triggerRGC(currentTime);
 				}
-			} catch (Exception e) {
-				System.out.println("Something went wrong with the daily garbage collection!  This should never happen.");
 			}
+		} catch (Exception e) {
+			System.out.println("Something went wrong with the daily garbage collection!  This should never happen.");
 		}
 	}
 	public void start(){
