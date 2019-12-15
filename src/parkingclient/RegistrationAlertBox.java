@@ -62,6 +62,29 @@ public class RegistrationAlertBox {
         Button reserveButton = new Button("Reserve");
         Button cancelButton = new Button("Cancel");
 
+        reserveButton.setOnAction(e -> {
+            if(!Main.server.reserveSpot(!isHandicapSpot.isSelected())){
+                Stage warningWindow = new Stage();
+
+                warningWindow.initModality(Modality.APPLICATION_MODAL);
+                warningWindow.setTitle("Pick a Location");
+                warningWindow.setWidth(150);
+
+                Label setTime = new Label("Warning: No spots available!  Please try another lot.");
+                VBox layout = new VBox();
+                layout.getChildren().add(setTime);
+
+                Scene warningScene = new Scene(layout, 150, 100);
+                warningWindow.setScene(warningScene);
+                warningWindow.showAndWait();
+            }
+            alertWindow.close();
+        });
+
+        cancelButton.setOnAction(e -> {
+            alertWindow.close();
+        });
+
         lowerLayout.getChildren().addAll(reserveButton, cancelButton);
         overallLayout.getChildren().add(lowerLayout);
 

@@ -115,7 +115,7 @@ public class ServerInterconnect {
         out.println((normalSpot?"normal":"handicap"));
         try{
         return in.readLine().equals("ok");
-        }catch(Exception e){return false;   }
+        }catch(Exception e){return false;}
     }
 
     public void disconnect(){
