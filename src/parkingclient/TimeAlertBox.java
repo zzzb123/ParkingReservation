@@ -1,4 +1,4 @@
-package sample;
+package parkingclient;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -103,13 +103,16 @@ public class TimeAlertBox {
                 //TODO: Tell them that they made an error
             } else {
                 Main.isTimeCorrectlySet = true;
+                int hours = Integer.parseInt((String)hoursBox.getValue());
+                if(hours == 12)
+                    hours = 0;
+                if(amOrPMBox.getValue().equals("PM"))
+                    hours += 12;
 
-
-                LocalDateTime startTime = LocalDateTime.of(date.getValue(), LocalTime.of(Integer.parseInt((String)hoursBox.getValue()), Integer.parseInt((String)minutesBox.getValue())));
+                LocalDateTime startTime = LocalDateTime.of(date.getValue(), LocalTime.of(hours, Integer.parseInt((String)minutesBox.getValue())));
                 String start = startTime.format(DateTimeFormatter.ofPattern("uuuu,MM,dd,HH,mm"));
-                startTime.plusMinutes(Integer.parseInt((String)minutesLengthBox.getValue()));
-                startTime.plusHours(Integer.parseInt((String)hoursLengthBox.getValue()));
-                String end = startTime.format(DateTimeFormatter.ofPattern("uuuu,MM,dd,HH,mm"));
+                LocalDateTime endTime = startTime.plusMinutes(Integer.parseInt((String)minutesLengthBox.getValue())).plusHours(Integer.parseInt((String)hoursLengthBox.getValue()));
+                String end = endTime.format(DateTimeFormatter.ofPattern("uuuu,MM,dd,HH,mm"));
                 Main.server.setReservation(start, end);
 
 
