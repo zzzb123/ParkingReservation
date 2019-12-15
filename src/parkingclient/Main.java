@@ -51,6 +51,8 @@ public class Main extends Application {
 
         Label loginText = new Label("Login");
         topDisplay.getChildren().add(loginText);
+        loginText.setStyle("-fx-font-size: 24");
+
 
         TextField usernameField = new TextField();
         usernameField.setPromptText("Username");
@@ -70,6 +72,7 @@ public class Main extends Application {
         bottomDisplay.getChildren().add(registerButton);
 
         overallDisplay.getChildren().addAll(topDisplay, bottomDisplay);
+        overallDisplay.setStyle("-fx-padding: 0 50 0 50");
 
         Scene loginScene = new Scene(overallDisplay, 500, 350);
         loginScene.getStylesheets().add("sample/styles.css");
@@ -92,8 +95,13 @@ public class Main extends Application {
 
     public void registrationMenu(Stage primaryStage) {
 
-        VBox overallDisplay = new VBox();
-        VBox topDisplay = new VBox();
+        VBox overallDisplay = new VBox(8);
+        VBox topDisplay = new VBox(8);
+
+        Label signUpLabel = new Label("Sign Up");
+        signUpLabel.setStyle("-fx-font-size: 24");
+        signUpLabel.setAlignment(Pos.CENTER);
+        topDisplay.getChildren().add(signUpLabel);
 
         Label invalidWarning = new Label(" ");
         topDisplay.getChildren().add(invalidWarning);
@@ -118,7 +126,8 @@ public class Main extends Application {
         repasswordField.setPromptText("Re-Type Password");
         topDisplay.getChildren().add(repasswordField);
 
-        HBox bottomDisplay = new HBox();
+        HBox bottomDisplay = new HBox(10);
+        bottomDisplay.setAlignment(Pos.CENTER);
 
         Button submitButton = new Button("Submit");
         Button cancelButton = new Button("Cancel");
@@ -126,8 +135,10 @@ public class Main extends Application {
         bottomDisplay.getChildren().addAll(submitButton, cancelButton);
 
         overallDisplay.getChildren().addAll(topDisplay, bottomDisplay);
+        overallDisplay.setStyle("-fx-padding: 0 50 0 50");
 
         Scene registrationScene = new Scene(overallDisplay, 750, 500);
+        registrationScene.getStylesheets().add("sample/styles.css");
         primaryStage.setScene(registrationScene);
 
         cancelButton.setOnAction(e -> {
@@ -195,6 +206,11 @@ public class Main extends Application {
                         for(int i = 0; i < Math.min(6, lotArray.length); i++) {
                             listViewItems.add(new Button(lotArray[i]));
                         }
+                        for(Button b : listViewItems) {
+                            b.setOnAction(ee -> {
+                                //RegistrationAlertBox.display(b);
+                            });
+                        }
                     } catch(Exception ex) {
                         System.out.println("Google servers are down; there is no more internet, there is no more world.");
                         ex.printStackTrace();
@@ -234,6 +250,8 @@ public class Main extends Application {
         rightPane.getChildren().add(middleRight);
 
         Button bottomRight = new Button("Display Current Reservations");
+        bottomRight.setPrefWidth(250);
+
         rightPane.getChildren().add(bottomRight);
         overallLayout.setRight(rightPane);
 
