@@ -2,6 +2,7 @@ package parkingclient;
 public class Lot{
     public boolean isMappedLot = false;
     public String name;
+    private int total;
     private int normal;
     private int handicap;
     public String readytimes;
@@ -14,8 +15,9 @@ public class Lot{
             String[] data = unparsedlotdata.split("\t");
             name = data[0];
             readytimes = data[1] + ":" + data[2];
-            normal = Integer.parseInt(data[3]);
-            handicap = Integer.parseInt(data[4]);
+            total = Integer.parseInt(data[3]);
+            normal = Integer.parseInt(data[4]);
+            handicap = Integer.parseInt(data[5]);
         }
     }
 
@@ -29,5 +31,10 @@ public class Lot{
             return -1;
         }
         return handicap;
+    }
+    public int getTotal(){
+        if(isMappedLot)
+            return -1;
+        return total;
     }
 }

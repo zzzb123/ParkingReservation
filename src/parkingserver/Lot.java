@@ -15,6 +15,10 @@ public class Lot{
         this.lotName = name;
     }
 
+    public int getTotalSpots(){
+        return normalSpots.length + handicapSpots.length;
+    }
+
     public int getNormalOpenings(Reservation r){
         int count = 0;
         for(Scheduler s : normalSpots){
