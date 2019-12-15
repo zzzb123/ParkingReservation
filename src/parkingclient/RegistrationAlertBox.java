@@ -38,8 +38,8 @@ public class RegistrationAlertBox {
         String[] timedata2 = unparsedTimes[1].split(",");
         LocalDateTime time1 = LocalDateTime.of(Integer.parseInt(timedata1[0]),Month.of(Integer.parseInt(timedata1[1])),Integer.parseInt(timedata1[2]),Integer.parseInt(timedata1[3]), Integer.parseInt(timedata1[4]));
         LocalDateTime time2 = LocalDateTime.of(Integer.parseInt(timedata2[0]),Month.of(Integer.parseInt(timedata2[1])),Integer.parseInt(timedata2[2]),Integer.parseInt(timedata2[3]), Integer.parseInt(timedata2[4]));
-        String timeString = time1.getMonthValue() + "/" + time1.getDayOfMonth() + " at " + time1.format(DateTimeFormatter.ofPattern("hh:mm aa"))
-             + " to " + time2.getMonthValue() + "/" + time2.getDayOfMonth() + " at " + time2.format(DateTimeFormatter.ofPattern("hh:mm aa"));
+        String timeString = time1.getMonthValue() + "/" + time1.getDayOfMonth() + " at " + time1.format(DateTimeFormatter.ofPattern("hh:mm a"))
+             + " to " + time2.getMonthValue() + "/" + time2.getDayOfMonth() + " at " + time2.format(DateTimeFormatter.ofPattern("hh:mm a"));
 
         Label nameAndTimeHeader = new Label(lotObject.name + " from " + timeString);
         nameAndTimeHeader.setUnderline(true);
