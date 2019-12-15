@@ -106,7 +106,7 @@ public class ConnectionHandler implements Runnable{
 							out.println(res);
 						}
 						else{
-							out.println(targetlot.lotName + "\t" + reservation.startTime + "\t" + reservation.endTime + "\t" + targetlot.getTotalSpots() +  "\t" + targetlot.getNormalOpenings(reservation) + "\t" + targetlot.getHandicapOpenings(reservation));
+							out.println(targetlot.lotName + "\t" + reservation.startTime.getTime() + "\t" + reservation.endTime.getTime() + "\t" + targetlot.getTotalSpots() +  "\t" + targetlot.getNormalOpenings(reservation) + "\t" + targetlot.getHandicapOpenings(reservation));
 						}
 						break;
 					case "reserve-spot":
