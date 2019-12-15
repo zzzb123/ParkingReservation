@@ -24,7 +24,7 @@ public class Server implements Runnable {
 			}
 			ssock.close();
 		} catch (Exception e) {
-			System.out.println("Error on startup, either the lot geodata is messed up or there was an error with SSL.");
+			System.out.println("Error on startup, check the formatting on the preloaded files and your network permissions");
 		}
 	}
 

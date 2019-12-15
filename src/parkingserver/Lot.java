@@ -78,7 +78,7 @@ public class Lot{
     }
 
     public double getDistance(double[] arg0){
-        return Math.sqrt(Math.pow(position[0] - arg0[0], 2) + Math.pow(position[1] - arg0[1],2));
+        return Math.sqrt(Math.pow(position[0]*1000 - arg0[0]*1000, 2) + Math.pow(position[1]*1000 - arg0[1]*1000,2));
     }
 
     public boolean schedulerIsHandicap(Scheduler s){
