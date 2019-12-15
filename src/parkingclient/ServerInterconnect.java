@@ -114,7 +114,9 @@ public class ServerInterconnect {
         out.println("reserve-spot");
         out.println((normalSpot?"normal":"handicap"));
         try{
-        return in.readLine().equals("ok");
+            boolean res = in.readLine().equals("ok");
+            System.out.println("successfully reserved spot!");
+            return res;
         }catch(Exception e){return false;}
     }
 

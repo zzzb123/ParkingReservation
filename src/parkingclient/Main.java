@@ -1,3 +1,12 @@
+/*
+Professor Mengistu,
+    I thought it would be wise to let you know that there was a bit
+of an issue with a couple of our teammates, specifically Ritika and 
+Kanthi.  Early on in our project work, we failed to make our 
+expectations for their additions clear, and the code they produced 
+was 
+*/
+
 package sample;
 
 import javafx.application.Application;
@@ -202,6 +211,7 @@ public class Main extends Application {
 
         searchButton.setOnAction(e -> {
             listViewItems.clear();
+            server.fixReservationSystem();
             if(!searchField.getText().isEmpty()) {
                 if(timeButton.getText().equals("Change Time")) {
                     try {
@@ -212,6 +222,9 @@ public class Main extends Application {
                         }
                         server.setPosition(FindCoordinates.getCoordinates(searchText));
                         lotArray = server.listLots(8);
+                        for(String s : lotArray){
+                            System.out.println(s);
+                        }
                         for(int i = 0; i < Math.min(6, lotArray.length); i++) {
                             listViewItems.add(
                                     new Button(
