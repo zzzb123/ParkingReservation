@@ -1,4 +1,4 @@
-package parkingclient;
+package sample;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -38,6 +39,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        server.disconnect();
     }
 
     public void loginMenu(Stage primaryStage) {
@@ -47,6 +49,7 @@ public class Main extends Application {
         VBox topDisplay = new VBox(5);
 
         Label invalidUserNameWarning = new Label(" ");
+        invalidUserNameWarning.setTextFill(Color.web("#dc3545"));
         topDisplay.getChildren().add(invalidUserNameWarning);
 
         Label loginText = new Label("Login");
@@ -98,13 +101,14 @@ public class Main extends Application {
         VBox overallDisplay = new VBox(8);
         VBox topDisplay = new VBox(8);
 
+        Label invalidWarning = new Label(" ");
+        invalidWarning.setTextFill(Color.web("#dc3545"));
+        topDisplay.getChildren().add(invalidWarning);
+
         Label signUpLabel = new Label("Sign Up");
         signUpLabel.setStyle("-fx-font-size: 24");
         signUpLabel.setAlignment(Pos.CENTER);
         topDisplay.getChildren().add(signUpLabel);
-
-        Label invalidWarning = new Label(" ");
-        topDisplay.getChildren().add(invalidWarning);
 
         TextField usernameField = new TextField();
         usernameField.setPromptText("Username");
@@ -146,13 +150,15 @@ public class Main extends Application {
         });
 
         submitButton.setOnAction(e -> {
-            if(passwordField.getText().equals(repasswordField.getText())) {
+            if(passwordField.getText().equals(repasswordField.getText()) && emailField.getText().contains("@") && emailField.getText().contains(".") && emailField.getText().lastIndexOf(".") > emailField.getText().indexOf("@")) {
                 if(server.registerUser(usernameField.getText(), emailField.getText(), idField.getText(), passwordField.getText())) {
                     mainMenu(primaryStage);
                 }
                 invalidWarning.setText("Warning: Username already exists");
-            } else {
+            } else if(!passwordField.getText().equals(repasswordField.getText())) {
                 invalidWarning.setText("Warning: Passwords do not Match");
+            } else {
+                invalidWarning.setText("Warning: Email formatted incorrectly");
             }
         });
 
@@ -167,13 +173,14 @@ public class Main extends Application {
         upperRight.setAlignment(Pos.CENTER);
 
         TextField searchField = new TextField();
-        searchField.setPromptText("Closest lots to: ");
+        searchField.setPromptText("Closest lots (in order) to: ");
 
         Button searchButton = new Button("Search");
         upperRight.getChildren().addAll(searchField, searchButton);
         rightPane.getChildren().add(upperRight);
 
         Button timeButton = new Button("Set Time");
+        timeButton.setStyle("-fx-text-fill: #dc3545");
         rightPane.getChildren().add(timeButton);
         timeButton.setPrefWidth(250);
 
@@ -181,6 +188,7 @@ public class Main extends Application {
             TimeAlertBox.display();
             if(isTimeCorrectlySet) {
                 timeButton.setText("Change Time");
+                timeButton.setStyle("-fx-text-fill: #000000");
             }
         });
 
@@ -193,6 +201,7 @@ public class Main extends Application {
         middleRight.setItems(listViewItems);
 
         searchButton.setOnAction(e -> {
+            listViewItems.clear();
             if(!searchField.getText().isEmpty()) {
                 if(timeButton.getText().equals("Change Time")) {
                     try {
@@ -204,11 +213,17 @@ public class Main extends Application {
                         server.setPosition(FindCoordinates.getCoordinates(searchText));
                         lotArray = server.listLots(8);
                         for(int i = 0; i < Math.min(6, lotArray.length); i++) {
-                            listViewItems.add(new Button(lotArray[i]));
+                            listViewItems.add(
+                                    new Button(
+                                            lotArray[i].split("\t")[0] +
+                                             "\n" + "Spots Available:" + lotArray[i].split(",")[0].substring(lotArray[i].indexOf("\t")) +
+                                            "\n" + "Handicap Spots Available: " + lotArray[i].substring(lotArray[i].indexOf(",") + 1)));
                         }
                         for(Button b : listViewItems) {
+                            b.setPrefWidth(210);
                             b.setOnAction(ee -> {
-                                //RegistrationAlertBox.display(b);
+                                server.setTargetLot(b.getText().split("\t")[0]);
+                                RegistrationAlertBox.display();
                             });
                         }
                     } catch(Exception ex) {
