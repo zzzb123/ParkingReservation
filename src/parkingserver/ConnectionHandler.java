@@ -86,6 +86,7 @@ public class ConnectionHandler implements Runnable{
 						}
 						user = (identifier.equals("null"))?new User(username, email, passhash):new User(username, email, passhash, identifier);
 						Server.users.put(username, user);
+						Server.writeUserFile(user, Server.USER_FILE_NAME);
 						out.println("ok");
 						break;
 					case "get-lot-data":
