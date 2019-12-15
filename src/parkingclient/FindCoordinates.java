@@ -1,4 +1,4 @@
-package parkingclient;
+package sample;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,8 +8,8 @@ import java.net.URL;
 public class FindCoordinates {
 
     public static String getCoordinates(String inputStr) throws IOException {
-        inputStr.replace(" ", "+");
-        URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + inputStr + ",+CA&key=AIzaSyAez0a7tgsZdb2Vuywbq_pWZ7UQNVveX1A");
+        String readyString = inputStr.replace(" ", "+");
+        URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + readyString + ",+CA&key=AIzaSyAez0a7tgsZdb2Vuywbq_pWZ7UQNVveX1A");
         HttpURLConnection conn = (HttpURLConnection)url.openConnection();
         InputStreamReader in = new InputStreamReader(conn.getInputStream());
         int read;

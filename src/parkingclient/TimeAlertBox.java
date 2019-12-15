@@ -1,4 +1,4 @@
-package parkingclient;
+package sample;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.Main;
 
 public class TimeAlertBox {
     public static void display() {
@@ -49,17 +50,17 @@ public class TimeAlertBox {
         }
 
         ComboBox<String> hoursBox = new ComboBox<>(possibleHours);
-        hoursBox.setPromptText("12");
+        hoursBox.setValue("12");
 
         Label colonLabel = new Label(" : ");
 
         ObservableList<String> possibleMinutes = FXCollections.observableArrayList("00", "30");
         ComboBox<String> minutesBox = new ComboBox<>(possibleMinutes);
-        minutesBox.setPromptText("00");
+        minutesBox.setValue("00");
 
         ObservableList<String> amOrPM = FXCollections.observableArrayList("AM", "PM");
         ComboBox<String> amOrPMBox = new ComboBox<>(amOrPM);
-        amOrPMBox.setPromptText("PM");
+        amOrPMBox.setValue("PM");
 
         upperAlertLayout.getChildren().addAll(hoursBox, colonLabel, minutesBox, amOrPMBox);
 
@@ -76,12 +77,12 @@ public class TimeAlertBox {
         }
 
         ComboBox<String> hoursLengthBox = new ComboBox<>(hoursLength);
-        hoursLengthBox.setPromptText("01");
+        hoursLengthBox.setValue("01");
         Label hoursLengthLabel = new Label(" Hours\t");
 
         ObservableList<String> minutesLength = FXCollections.observableArrayList("00", "30");
         ComboBox<String> minutesLengthBox = new ComboBox<>(minutesLength);
-        minutesLengthBox.setPromptText("00");
+        minutesLengthBox.setValue("00");
         Label minutesLengthLabel = new Label(" Minutes\t");
 
         Button submitButton = new Button("Submit");

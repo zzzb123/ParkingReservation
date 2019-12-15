@@ -1,21 +1,27 @@
-package parkingclient;
+package sample;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class Main extends Application {
 
@@ -176,30 +182,52 @@ public class Main extends Application {
         middleRight.setItems(listViewItems);
 
         searchButton.setOnAction(e -> {
-            if(timeButton.getText().equals("Change Time")) {
-                try {
-                    String[] lotArray;
-                    server.setPosition(FindCoordinates.getCoordinates(searchField.getText()));
-                    lotArray = server.listLots(8);
-                    for(int i = 0; i < Math.min(6, lotArray.length); i++) {
-                        listViewItems.add(new Button(lotArray[i]));
+            if(!searchField.getText().isEmpty()) {
+                if(timeButton.getText().equals("Change Time")) {
+                    try {
+                        String[] lotArray;
+                        String searchText = searchField.getText().toLowerCase();
+                        if(!searchText.contains("gmu")) {
+                            searchText += " gmu";
+                        }
+                        server.setPosition(FindCoordinates.getCoordinates(searchText));
+                        lotArray = server.listLots(8);
+                        for(int i = 0; i < Math.min(6, lotArray.length); i++) {
+                            listViewItems.add(new Button(lotArray[i]));
+                        }
+                    } catch(Exception ex) {
+                        System.out.println("Google servers are down; there is no more internet, there is no more world.");
+                        ex.printStackTrace();
                     }
-                } catch(Exception ex) {
-                    System.out.println("Google servers are down; there is no more internet, there is no more world.");
+                } else {
+                    Stage alertWindow = new Stage();
+
+                    alertWindow.initModality(Modality.APPLICATION_MODAL);
+                    alertWindow.setTitle("Pick a Time");
+                    alertWindow.setWidth(150);
+
+                    Label setTime = new Label("Warning: Please set a specified time before searching");
+                    VBox layout = new VBox();
+                    layout.getChildren().add(setTime);
+
+                    Scene alertSetTimeScene = new Scene(layout, 150, 100);
+                    alertWindow.setScene(alertSetTimeScene);
+                    alertWindow.showAndWait();
                 }
             } else {
                 Stage alertWindow = new Stage();
 
                 alertWindow.initModality(Modality.APPLICATION_MODAL);
-                alertWindow.setTitle("Pick a Time");
+                alertWindow.setTitle("Pick a Location");
                 alertWindow.setWidth(150);
 
-                Label setTime = new Label("Warning: Please set a specified time before searching");
+                Label setTime = new Label("Warning: Please Set a Desired Location");
                 VBox layout = new VBox();
                 layout.getChildren().add(setTime);
 
                 Scene alertSetTimeScene = new Scene(layout, 150, 100);
                 alertWindow.setScene(alertSetTimeScene);
+                alertWindow.showAndWait();
             }
         });
 
