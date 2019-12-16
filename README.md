@@ -2,5 +2,5 @@
 tis a parking reservation system
 
 Authors::
-Robert Dash (zzzb123)
+Robert Dash (zzzb123),
 Kevin Mankowski (KMankowski)
