@@ -44,6 +44,7 @@ public class TimePoint implements Comparable<TimePoint>{
         return compareTo((TimePoint)arg0) == 0;
     }
 
+    @Override
     public int hashCode(){
         return getTime().hashCode();
     }
