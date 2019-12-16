@@ -14,7 +14,7 @@ public class Threader implements Runnable {
     }
 
     public void run() {
-        while (true) {
+        while (delay >= 0) {
             try {
                 wait(delay);
             } catch (InterruptedException e) {
@@ -23,7 +23,7 @@ public class Threader implements Runnable {
             action.execute();
         }
     }
-    public static void start(int delay, Threader_Interface lambda){
+    public static void create(int delay, Threader_Interface lambda){
         Threader act = new Threader(delay,lambda);
         new Thread(act).start();
     }
