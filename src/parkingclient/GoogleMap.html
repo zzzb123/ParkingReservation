@@ -118,8 +118,8 @@
           map: map
         });
       }
-      function reCenter(x,y,z){
-        map.center = new google.maps.LatLng(38.8306733,-77.3132984);
+      function reCenter(x,y){
+        map.setCenter(new google.maps.LatLng(x,y))
       }
     </script>
 <script async defer
