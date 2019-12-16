@@ -138,12 +138,14 @@ public class ServerInterconnect {
         return out;
     }
 
-    public void cancelReservation() throws ActionOutOfOrderException{
+    public void cancelReservation(boolean type) throws ActionOutOfOrderException{
         if(!userSet || !reservationSet){
             throw new ActionOutOfOrderException();
         }
         out.println("cancel-reservation");
     }
+
+
 
     public void fixReservationSystem(){
         out.println("fix-reservation");

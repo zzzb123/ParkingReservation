@@ -1,2 +1,6 @@
 # ParkingReservation
-tis a parking reservation system
+A parking reservation system.
+
+Authors::
+    Kevin Mankowski (KMankowski)
+    Robert Dash (zzzb123)
