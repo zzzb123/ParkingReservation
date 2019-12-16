@@ -1,12 +1,3 @@
-/*
-Professor Mengistu,
-    I thought it would be wise to let you know that there was a bit
-of an issue with a couple of our teammates, specifically Ritika and 
-Kanthi.  Early on in our project work, we failed to make our 
-expectations for their additions clear, and the code they produced 
-was 
-*/
-
 package sample;
 
 import javafx.application.Application;
