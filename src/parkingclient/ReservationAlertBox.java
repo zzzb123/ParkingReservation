@@ -36,7 +36,7 @@ public class ReservationAlertBox {
             LocalDateTime time2 = LocalDateTime.of(Integer.parseInt(timedata2[0]),Month.of(Integer.parseInt(timedata2[1])),Integer.parseInt(timedata2[2]),Integer.parseInt(timedata2[3]), Integer.parseInt(timedata2[4]));
             String timeString = time1.getMonthValue() + "/" + time1.getDayOfMonth() + " at " + time1.format(DateTimeFormatter.ofPattern("hh:mm a"))
              + " to " + time2.getMonthValue() + "/" + time2.getDayOfMonth() + " at " + time2.format(DateTimeFormatter.ofPattern("hh:mm a"));
-            String result = ss[0] + ", Normal, " + " from " + timeString;
+            String result = ss[0] + " from " + timeString;
         }
 
 

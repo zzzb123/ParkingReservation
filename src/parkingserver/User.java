@@ -1,14 +1,13 @@
 package parkingserver;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class User {
     public String username;
     public String password;
     public String email;
     public String identifier;
-    public LinkedList<Reservation> reservations = new LinkedList<>();
+    public HashMap<Reservation,Lot> reservations = new HashMap<>();
 
     public User(String username, String email, String password, String identifier){
         this.username = username;
@@ -22,8 +21,7 @@ public class User {
 
     public void linkReservation(Reservation r, Lot l){//creates a reservation that is bound to a given lot -- expected to be already uploaded to the lot
         r.user = this;
-        r.lot = l;
-        reservations.add(r);
+        reservations.put(r,l);
     }
     
     @Override

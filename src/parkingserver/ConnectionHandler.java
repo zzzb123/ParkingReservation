@@ -120,14 +120,10 @@ public class ConnectionHandler implements Runnable{
 						else{
 							String type = in.readLine();
 							try{
-							if(type.equals("normal")){
+							if(type.equals("normal"))
 								targetlot.reserveNormalSpot(reservation);
-								reservation.isNormal = true;
-							}
-							else{
+							else
 								targetlot.reserveHandicapSpot(reservation);
-								reservation.isNormal = false;
-							}
 							user.linkReservation(reservation, targetlot);
 							out.println("ok");
 							}catch(Exception e){out.println("sorry");}
@@ -138,14 +134,12 @@ public class ConnectionHandler implements Runnable{
 					case "disconnect": //lets make a way to prevent the server from throwing errors left and right during execution, shall we?
 						break toExit;
 					case "list-reservations":
-						for(Reservation r : user.reservations){
-							out.println(r.startTime.getTime() + ":" + r.endTime.getTime() +  ":" + r.lot.lotName + ":" + (r.isNormal?"normal":"handicap"));
+						for(Entry<Reservation,Lot> e : user.reservations.entrySet()){
+							out.println(e.getKey().startTime.getTime() + ":" + e.getKey().endTime.getTime() +  ":" + e.getValue().lotName);
 						}
 						out.println("ok");
 						break;
 					case "cancel-reservation"://TODO known bad implementation
-						reservation.lot = targetlot;
-						reservation.isNormal = in.readLine().equals("normal");
 						targetlot.cancelReservation(reservation);
 						user.reservations.remove(reservation);
 						break;
