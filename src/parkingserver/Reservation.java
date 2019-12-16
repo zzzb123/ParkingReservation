@@ -19,6 +19,6 @@ public class Reservation implements Serializable{
 
     @Override
     public int hashCode(){
-        return new String(startTime.hashCode() + "" + endTime.hashCode()).hashCode();
+        return ("" + startTime.hashCode() + endTime.hashCode() + this.toString().hashCode()).hashCode();
     }
 }
